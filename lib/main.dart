@@ -1,6 +1,9 @@
+import 'package:catppuccin_flutter/catppuccin_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_getx_nav/Page2.dart';
+import 'package:flutter_getx_nav/Page_2.dart';
+
+Flavor flavor = catppuccin.mocha;
 
 void main() {
   runApp(const MainApp());
@@ -13,15 +16,30 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      darkTheme: ThemeData(
+        scaffoldBackgroundColor: flavor.base,
+        appBarTheme: AppBarTheme(
+          backgroundColor: flavor.base,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(flavor.surface1),
+            foregroundColor: WidgetStatePropertyAll(flavor.text)
+          )
+        )
+      ),
       home: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text('Flutter Navigation with GetX',
+              Text(
+                'Flutter Navigation with GetX',
                 style: TextStyle(
+                  color: flavor.text,
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -35,7 +53,8 @@ class MainApp extends StatelessWidget {
                 },
                 child: const Text("Click to goto page 2"),
               ),
-              Text('22ug1-0093',
+              Text(
+                '22ug1-0093',
                 style: TextStyle(
                   fontSize: 13.0,
                   fontStyle: FontStyle.italic,
